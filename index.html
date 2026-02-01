@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Captain Benzy</title>
+  <title>Balloon Transition Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    a {
+      font-size: 20px;
+      text-decoration: none;
+      color: #2c3e50;
+      padding: 10px 20px;
+      border: 2px solid #2c3e50;
+      border-radius: 5px;
+    }
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: red;
+      border-radius: 50%;
+      animation: floatUp 3s forwards;
+    }
+    @keyframes floatUp {
+      from { bottom: -100px; opacity: 1; }
+      to { bottom: 100%; opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <h1>Hello World!</h1>
-  <p>This is my first website.</p>
+  <p><a href="next.html" onclick="launchBalloons(event)">Go to Next Page</a></p>
+
+  <script>
+    function launchBalloons(event) {
+      event.preventDefault(); // stop immediate navigation
+      const link = event.target.href;
+
+      // create a few balloons
+      for (let i = 0; i < 10; i++) {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.style.left = Math.random() * window.innerWidth + "px";
+        balloon.style.background = ["red","blue","green","yellow","pink"][Math.floor(Math.random()*5)];
+        document.body.appendChild(balloon);
+
+        // remove after animation
+        setTimeout(() => balloon.remove(), 3000);
+      }
+
+      // navigate after animation
+      setTimeout(() => {
+        window.location.href = link;
+      }, 2500);
+    }
+  </script>
 </body>
 </html>
