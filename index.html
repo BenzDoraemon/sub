@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Balloon Transition Demo</title>
+  <title>Decision Prompt</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 100px;
+      padding-top: 50px;
+      background-color: #f4f4f4;
     }
-    a {
-      font-size: 20px;
-      text-decoration: none;
-      color: #2c3e50;
+
+    .container {
+      background: white;
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .image-box {
+      width: 100%;
+      height: 180px;
+      background-color: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      font-size: 16px;
       padding: 10px 20px;
-      border: 2px solid #2c3e50;
+      margin: 0 10px;
+      border: none;
       border-radius: 5px;
+      cursor: pointer;
     }
 
-    .balloon {
-  position: fixed;
-  bottom: -150px;
-  width: 500px;   /* increase size here */
-  height: auto;   /* keeps proportions */
-  animation: floatUp 4s forwards, sway 2s infinite ease-in-out;
-}
-
-
-    @keyframes floatUp {
-      from { bottom: -150px; opacity: 1; }
-      to { bottom: 100%; opacity: 0; }
+    .yes {
+      background-color: #2ecc71;
+      color: white;
     }
 
-    @keyframes sway {
-      0%   { transform: rotate(-5deg); }
-      50%  { transform: rotate(5deg); }
-      100% { transform: rotate(-5deg); }
+    .no {
+      background-color: #e74c3c;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p><a href="next.html" onclick="launchBalloons(event)">Go to Next Page</a></p>
-
-  <script>
-    function launchBalloons(event) {
-      event.preventDefault();
-      const link = event.target.href;
-
-      for (let i = 0; i < 8; i++) {
-        const balloon = document.createElement("img");
-        balloon.src = "balloon.jpg"; // your balloon image
-        balloon.className = "balloon";
-        balloon.style.left = Math.random() * window.innerWidth + "px";
-        balloon.style.animationDuration = (3 + Math.random()*2) + "s"; // random speed
-        document.body.appendChild(balloon);
-
-        setTimeout(() => balloon.remove(), 5000);
-      }
-
-      setTimeout(() => {
-        window.location.href = link;
-      }, 3500);
-    }
-  </script>
+  <div class="container">
+    <div class="image-box">
+      <img src="images/sample.jpg" alt="Sample Image">
+    </div>
+    <div class="text">Do you like this image?</div>
+    <div class="buttons">
+      <button class="yes">Yes</button>
+      <button class="no">No</button>
+    </div>
+  </div>
 </body>
 </html>
-
