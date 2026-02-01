@@ -4,17 +4,21 @@
   <title>Decision Prompt</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 50px;
-      background-color: #f4f4f4;
-    }
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  height: 100vh;             /* full viewport height */
+  margin: 0;                 /* remove default margins */
+  background-color: #f4f4f4; /* optional background */
+}
 
-    .container {
+.container {
   background: white;
-  width: 500px; /* was 300px */
-  padding: 30px; /* more space inside */
-  font-size: 20px; /* scales up text */
+  width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .image-box {
@@ -69,6 +73,7 @@
   </div>
 </body>
 </html>
+
 
 
 
