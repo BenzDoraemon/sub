@@ -18,11 +18,13 @@
     }
 
     .balloon {
-      position: fixed;
-      bottom: -150px;
-      width: 60px;
-      animation: floatUp 4s forwards, sway 2s infinite ease-in-out;
-    }
+  position: fixed;
+  bottom: -150px;
+  width: 500px;   /* increase size here */
+  height: auto;   /* keeps proportions */
+  animation: floatUp 4s forwards, sway 2s infinite ease-in-out;
+}
+
 
     @keyframes floatUp {
       from { bottom: -150px; opacity: 1; }
@@ -63,3 +65,4 @@
   </script>
 </body>
 </html>
+
