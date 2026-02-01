@@ -17,38 +17,22 @@
       border-radius: 5px;
     }
 
-    /* Balloon styling */
     .balloon {
       position: fixed;
-      bottom: -100px;
-      width: 40px;
-      height: 50px;
-      border-radius: 50%;
+      bottom: -150px;
+      width: 60px;
       animation: floatUp 4s forwards, sway 2s infinite ease-in-out;
     }
 
-    /* String styling */
-    .string {
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      width: 2px;
-      height: 30px;
-      background: #333;
-      transform: translateX(-50%);
-    }
-
-    /* Float upwards */
     @keyframes floatUp {
-      from { bottom: -100px; opacity: 1; }
+      from { bottom: -150px; opacity: 1; }
       to { bottom: 100%; opacity: 0; }
     }
 
-    /* Side-to-side wobble */
     @keyframes sway {
-      0%   { transform: translateX(-50%) rotate(-3deg); }
-      50%  { transform: translateX(-50%) rotate(3deg); }
-      100% { transform: translateX(-50%) rotate(-3deg); }
+      0%   { transform: rotate(-5deg); }
+      50%  { transform: rotate(5deg); }
+      100% { transform: rotate(-5deg); }
     }
   </style>
 </head>
@@ -58,28 +42,20 @@
 
   <script>
     function launchBalloons(event) {
-      event.preventDefault(); // stop immediate navigation
+      event.preventDefault();
       const link = event.target.href;
 
-      // create a few balloons
-      for (let i = 0; i < 10; i++) {
-        const balloon = document.createElement("div");
+      for (let i = 0; i < 8; i++) {
+        const balloon = document.createElement("img");
+        balloon.src = "balloon.jpg"; // your balloon image
         balloon.className = "balloon";
         balloon.style.left = Math.random() * window.innerWidth + "px";
-        balloon.style.background = ["red","blue","green","yellow","pink"][Math.floor(Math.random()*5)];
-
-        // add string
-        const string = document.createElement("div");
-        string.className = "string";
-        balloon.appendChild(string);
-
+        balloon.style.animationDuration = (3 + Math.random()*2) + "s"; // random speed
         document.body.appendChild(balloon);
 
-        // remove after animation
-        setTimeout(() => balloon.remove(), 4000);
+        setTimeout(() => balloon.remove(), 5000);
       }
 
-      // navigate after animation
       setTimeout(() => {
         window.location.href = link;
       }, 3500);
@@ -87,4 +63,3 @@
   </script>
 </body>
 </html>
-
